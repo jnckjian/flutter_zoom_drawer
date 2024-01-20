@@ -23,8 +23,13 @@ class Style1Widget extends StatelessWidget {
   final Color? menuBackgroundColor;
 
   @override
-  Widget build(BuildContext context) {
-    final xOffset = (1 - animationValue) * slideWidth * slideDirection;
+  Widget build(BuildContext context) {    
+    final screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
+    final xOffset = (1 - animationValue) * slideWidth * slideDirection -
+        (isRtl ? (screenWidth - slideWidth) : 0);
 
     return Stack(
       children: [
